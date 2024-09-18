@@ -12,8 +12,9 @@ https://www.shadertoy.com/view/M3fcD2
 
 
 <p align="center">
-  <img src="https://github.com/yiliu1237/lab02-debugging/shader_result.gif?raw=true"/>
+  <img src="https://github.com/yiliu1237/lab02-debugging/blob/main/shader_result.gif?raw=true"/>
 </p>
+
 
 
 ## Bug1: Syntax Error 
