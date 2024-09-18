@@ -4,9 +4,7 @@
 
 [My Shadertoy Link](https://www.shadertoy.com/view/X3scWj)
 
-<p align="center">
-<img width="477" alt="image" src="https://github.com/user-attachments/assets/a3239efe-aa3f-4e8f-bae9-28b93e45dc32">
-</p>
+![sdf](https://github.com/user-attachments/assets/92dc2cc3-7005-4dbc-8069-d6b2a0c1c5a1)
 
 - **Bug 1**: Line 97, vec uv2 = 2.0 * uv - vec2(1.0); Code did not compile, so this bug was fairly easy to find.
 - **Bug 2**: Line 100, raycast(uv, dir, eye, ref); Sphere position was off, so I decided to double check my ray cast inputs, where I found the bug.
