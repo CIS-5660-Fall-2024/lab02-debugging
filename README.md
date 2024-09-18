@@ -1,19 +1,40 @@
 # lab02-debugging
 
-# Setup 
+Team member: Crystal Jin, Sirui Zhu
 
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
+Link: https://www.shadertoy.com/view/M3XcD2
 
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
+Bug1: line 97
 
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
+syntax error appears first
 
-Extra credit if you can find all FIVE bugs.
+replacing vec with vec2 to compile
 
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
-- In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+
+Bug2: line 100
+
+looks like a camera bug occurred since the view isn't centered in the middle
+
+replacing uv with uv2 since we want a centered view
+
+
+Bug3: line 11
+
+The camera is still horizontally stretched
+
+Change the second iResolution.x to iResolution.y to resolve the stretching
+
+
+Bug4: line 75
+
+The specular reflection is not working. 
+
+The wrong light source is passed into the recursive call, replace eye with dir to enable the reflection
+
+
+Bug5: line 18
+
+The background floor is not detailed enough compared to the reference video.
+
+Increase the i value in the for loop of the march function from 64 to 300 to provide an extension on the floor
+
