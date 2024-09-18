@@ -6,8 +6,8 @@ Solution: [https://www.shadertoy.com/view/M3XyD2](https://www.shadertoy.com/view
 
 # Bug fixes
 - First fixed line 97, correcting the syntax error
-- Second fixed line 100 to use correct [-1,1] space for camera calculations
-- Third fixed line 11 to have the correct aspect ratio
+- Second fixed line 100 to use correct [-1,1] space for camera calculations; found because only a quarter of the full picture was rendering
+- Third fixed line 11 to have the correct aspect ratio; found because the picture was squished
 - Fourth fixed the ray march number of steps to extend the ray search distance; noticed this because the tiles farther away weren't appearing + weird warping near the spheres
 - Fifth fixed line 75 to have proper reflections -- noticed that there weren't any and figured that the reflection direction wasn't right
   - (I initially thought I fixed this by replacing eye with isect and that led me down an incorrect path as I was trying to fix nor later... but in reality, my first fix was wrong and deceived me.)
