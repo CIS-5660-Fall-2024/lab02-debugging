@@ -22,7 +22,7 @@ https://www.shadertoy.com/view/M3fcD2
 - Fix: Change the type of uv2 to vec2.
 - How It Was Found: The Shadertoy editor highlighted this as a syntax error upon running the shader.
 
-## Bug2 Incorrect Input to raycast Function
+## Bug2: Incorrect Input to raycast Function
 - Issue: The uv variable was incorrectly used when calling the raycast function.
 - Fix: Use uv2 instead of uv when calling raycast to ensure proper coordinates are passed.
 - How It Was Found: The rendered output was distorted, leading to inspection of how coordinates were handled.
