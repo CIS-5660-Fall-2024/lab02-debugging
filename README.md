@@ -1,4 +1,12 @@
 # lab02-debugging
+## Zhen Ren
+[Shadertoy Link](https://www.shadertoy.com/view/l3XcW2)
+
+## Bug Fixed:
+- Input of raycast should be uv2 instead of uv. Found by noticing that objects are on the left bottom corner, which means the range of input uv is wrong.
+- V vector incorrect. Found by up-down inverted scene.
+- Aspect ratio of H vector is incorrect. Found by noticing that the ojects are distorted.
+- Reflection direction incorrect. Found by noticing wrong reflection results.
 
 # Setup 
 
