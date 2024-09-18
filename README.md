@@ -5,17 +5,29 @@ Team member: Crystal Jin, Sirui Zhu
 Link: https://www.shadertoy.com/view/M3XcD2
 
 Bug1: line 97
+
 syntax error appears first
+
 replacing vec with vec2 to compile
 
+
 Bug2: line 100
+
 looks like a camera bug occurred since the view isn't centered in the middle
+
 replacing uv with uv2 since we want a centered view
 
+
 Bug3: line 11
+
 The camera is still horizontally stretched
+
 Change the second iResolution.x to iResolution.y to resolve the stretching
 
+
 Bug4: line 75
+
 The specular reflection is not working. 
+
 The wrong light source is passed into the recursive call, replace eye with dir to enable the reflection
+
