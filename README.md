@@ -13,7 +13,7 @@
     
 2. After fixing bug 1, the shader compiles successfully and it looks like this:
     
-    ![Screenshot 2024-09-18 at 10.28.47 AM.png](Screenshot 2024-09-18 at 10.28.47 AM.png)
+    ![Screenshot 2024-09-18 at 10.28.47 AM.png](Screenshot_2024-09-18_at_10.28.47_AM.png)
     
     It seems that the SDF is not at the right place. And it does not look like a sphere. So, I assume there will be a bug in the x and y. And I found out that in the line 11.
     
