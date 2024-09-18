@@ -1,4 +1,5 @@
 ### Results:
+![](01.gif)
 [Shadertoy](https://www.shadertoy.com/view/l3XcD2)
 I fixed the following bugs in this lab02 project
 - Syntax error:
