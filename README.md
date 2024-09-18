@@ -31,3 +31,10 @@ The specular reflection is not working.
 
 The wrong light source is passed into the recursive call, replace eye with dir to enable the reflection
 
+
+Bug5: line 18
+
+The background floor is not detailed enough compared to the reference video.
+
+Increase the i value in the for loop of the march function from 64 to 300 to provide an extension on the floor
+
