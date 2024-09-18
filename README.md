@@ -1,19 +1,11 @@
 # lab02-debugging
 
-# Setup 
-
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
-
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
-
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
-
-Extra credit if you can find all FIVE bugs.
-
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
-- In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+Aaron Jiang and Lewis Ghrist  
+Shader: https://www.shadertoy.com/view/X3syDj  
+  
+Bugs found:  
+1) vec type not found in mainImage() causing a compliation error. I found this because there was big red text describing the error.  
+2) uv2 was declared but not passed in. I figured that the 2 after uv2 was actually supposed to be with the vec to form vec2. This fixed a zoom in into the top left corner.   
+3) The aspect ratio calculation was wrong as we divided by x/x instead of x/y. I found this because the image was stretched.  
+4) The renderer had an insufficient number of steps - I found this because the floor disappeared early and there was warping around the edges of the spheres.  
+5) The reflected ray was not using the correct input direction. It used eye, which was a vector from world origin to camera position, instead of dir, which is the direction the ray was traveling in. I noticed that specular reflections were not appearing.    
