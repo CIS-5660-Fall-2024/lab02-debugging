@@ -1,5 +1,9 @@
 # lab02-debugging
 
+# Solution(s)
+
+[Link to Shadertoy](https://www.shadertoy.com/view/flGfRc)
+
 # Setup 
 
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
