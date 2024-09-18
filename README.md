@@ -1,4 +1,10 @@
 # lab02-debugging
+group member：Yang Yu
+links：https://www.shadertoy.com/view/4XfcDX
+The compiler shows an error related to uv2. It should be uv(0,1) instead of uv2(-1,1), which is why the sphere appears in the lower-left corner instead of the center of the screen.
+There's also a resolution issue, as the sphere isn't perfectly round.
+The reflection direction is incorrect, causing the sphere not to reflect the floor properly.
+Furthermore, the iteration count is too low, leading to voids around the edges of the sphere.
 
 # Setup 
 
