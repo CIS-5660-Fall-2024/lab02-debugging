@@ -1,15 +1,31 @@
-# lab02-debugging
+# lab02-debugging - Annie Qiu
+Shader toy Link: https://www.shadertoy.com/view/4XlyWj
 
-# Setup 
+# Results
+![](Result.gif)
 
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
+# Debug Process
 
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
+### vec to vec2
+- Bug: 'vec' : undeclared identifier 'uv2' : syntax error
+- Solution: `vec2` should be used to represent the 2D vector `uv2`. Instead of `vec uv2 = 2.0 * uv - vec2(1.0);`, I use `vec2 uv2 = 2.0 * uv - vec2(1.0)`; to properly handle the 2D vector.
 
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
+### H formula
+- Bug:  H *= len * iResolution.x / iResolution.x;
+- Solution: If I multiply and divide by the same value, the expression becomes unnecessary. The corrected formula is `H *= len * iResolution.x / iResolution.y;`, which ensures proper aspect ratio adjustment.
 
-Extra credit if you can find all FIVE bugs.
+### Ray Cast Input
+- Bug: `raycast(uv, dir, eye, ref);`
+- Solution: The raycast function should use uv2 instead of uv, as uv2 is correctly normalized to the range [-1,1].
+
+### March Steps
+- Bug: ` for(int i = 0; i < 64; ++i)`
+- Solution: Increase the number of marching steps to ensure a clearer rendering of the background. In this case, updating it to `for(int i = 0; i < 164; ++i)` yields better results.
+
+### Reflect
+- Bug: `dir = reflect(eye, nor);`
+- Solution: The reflection should use the initial direction dir from the first march, updating the line to `dir = reflect(dir, nor);` for correct reflection behavior.
+
 
 # Submission
 - Create a pull request to this repository
