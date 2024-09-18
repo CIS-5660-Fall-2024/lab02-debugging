@@ -1,19 +1,68 @@
 # lab02-debugging
 
-# Setup 
+Partner: Christina Qiu
 
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
+Shadertoy: https://www.shadertoy.com/view/lXXcW2
 
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
+## Bugs
+The first bug we noticed was the syntax error:
+```glsl
+vec uv2 = 2.0 * uv - vec2(1.0);
+```
+which we corrected to:
+```glsl
+vec2 uv2 = 2.0 * uv - vec2(1.0);
+```
 
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
+---
+The next bug we noticed was:
+```glsl
+ H *= len * iResolution.x / iResolution.x;
+```
+which should be:
+```glsl
+H *= len * iResolution.x / iResolution.y;
+```
+We found this by skimming the raytracing code for strange lines, since the original view was weird.
 
-Extra credit if you can find all FIVE bugs.
+---
+However, we noted that the camera position and raytracing was still incorrect, since the red sphere at (0, 0, 0) was not appearing in the center of view.
+With the help of Adam, we noticed that the normalized UV coordinates were not being passed into raytracing:
+```glsl
+raycast(uv, dir, eye, ref);
+```
+which should be:
+```glsl
+raycast(uv2, dir, eye, ref);
+```
 
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
-- In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+---
+Next we tackled the lack of specular reflection on the objects. We noted that the reflected direction was incorrect:
+```glsl
+dir = reflect(eye, nor);
+```
+The incident direction is given by `dir`, not `eye`, so we changed this to:
+```glsl
+dir = reflect(dir, nor);
+```
+
+---
+We also noticed that the current scene was overall brighter than the reference, which can be attributed to incorrect global illumination.
+It turns out the skybox color should be computed using object-space direction of the hit object to the sky (i.e. the object normal), rather than the world-space direction. Thus, we changed:
+```glsl
+specReflCol = skyColor(dir);
+```
+to:
+```glsl
+specReflCol = skyColor(nor);
+```
+
+---
+Finally, we addressed the problem of the scene not being drawn to a far enough distance. With Rachel's help, we fixed this by increasing the iteration limit for the ray march from:
+```glsl
+for(int i = 0; i < 64; ++i) {
+```
+to:
+```glsl
+for(int i = 0; i < 1000; ++i) {
+```
