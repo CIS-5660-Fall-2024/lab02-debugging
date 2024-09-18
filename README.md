@@ -4,6 +4,12 @@
 
 [Link to Shadertoy](https://www.shadertoy.com/view/flGfRc)
 
+Bugs:
+- uv2 compilation error; just read the compiler error and fixed
+- uv2 not used instead of uv; noticed that the view seemed to be limited to a quadrant of the screen
+- H/V cross product bugs; noticed that the view was upside down/flipped and then noticed the cross-product equations for H and V were wrong
+- ray-march distance bug; noticed that the view was cut off and just experimented with # of steps in the ray-march
+
 # Setup 
 
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
