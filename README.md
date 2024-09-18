@@ -1,3 +1,20 @@
+### Results:
+[Shadertoy](https://www.shadertoy.com/view/l3XcD2)
+I fixed the following bugs in this lab02 project
+- Syntax error:
+  - vec uv should be vec2 uv
+- Argument input error:
+  - should put uv2 in the raycast function instead of uv, so that the camera can correctly see the entire scene
+- iResolution error:
+  - should change iResolution.x / iResolution.x to iResolution.x / iResolution.y so that the camera will not be distorted
+- Ray march limit error:
+  - should increase the maximum distance(i < 256 instead of i < 64) that ray can march the scene object so that the camera can see the further floor
+- Reflection error:
+  - this one is very tricky, should plug dir into the reflect function instead of eye
+
+
+
+
 # lab02-debugging
 
 # Setup 
