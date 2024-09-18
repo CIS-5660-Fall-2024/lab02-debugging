@@ -2,6 +2,7 @@
 
 # Setup 
 
+Team Yippee: Jill Rayca and Clara Nolan
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
 
 Let's practice debugging! We have a broken shader. It should produce output that looks like this:
