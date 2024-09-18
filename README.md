@@ -1,4 +1,100 @@
 # lab02-debugging
+1. In the line 97, there was a compile error:
+    
+    ```cpp
+    vec uv2 = 2.0 * uv - vec2(1.0);
+    ```
+    
+    which should be:
+    
+    ```cpp
+    vec2 uv2 = 2.0 * uv - vec2(1.0);
+    ```
+    
+2. After fixing bug 1, the shader compiles successfully and it looks like this:
+    
+    ![Screenshot 2024-09-18 at 10.28.47 AM.png]
+    
+    It seems that the SDF is not at the right place. And it does not look like a sphere. So, I assume there will be a bug in the x and y. And I found out that in the line 11.
+    
+    ```cpp
+    textH *= len * iResolution.x / iResolution.x;
+    ```
+    
+    which should be:
+    
+    ```cpp
+    textH *= len * iResolution.x / iResolution.y;
+    ```
+    
+    The aspect ratio calculation is incorrect, which can lead to distortion in the image.
+    
+3. Now, the shader looks like this:
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image.png)
+    
+    I found out that the screen is only outputting 1/4 of what we expected. I assume that there is some uv issue since ray march seems fine after all. Then I found out that uv2 is declared but never used. So I changed line 100 from
+    
+    ```cpp
+    raycast(uv, dir, eye, ref);
+    ```
+    
+    to
+    
+    ```cpp
+    raycast(uv2, dir, eye, ref);
+    ```
+    
+4. The scenes transform seems fine now:
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image%201.png)
+    
+    However, there are still some issue. Like the material of the sphere is not ray marching. I also noticed that there are some strange warp around the sphere:
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image%202.png)
+    
+    I think this should be some ray marching precision problem. In the line 22, I changed the m:
+    
+    ```cpp
+    if(m < 0.01)
+    ```
+    
+    to
+    
+    ```cpp
+    if(m < 0.001)
+    ```
+    
+    Then, the floor turns out to be cutoff more, but the warp seems better:
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image%203.png)
+    
+    This appears to be a cutoff issue if the distance is too far, so I adjust the iteration cutoff distance in line 18:
+    
+    ```cpp
+    for(int i = 0; i < 64; ++i)
+    ```
+    
+    into
+    
+    ```cpp
+    for(int i = 0; i < 256; ++i)
+    ```
+    
+5. The only problem left here is that there is no reflection:
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image%204.png)
+    
+    So, I went to the ray marching logic and, thanks to my friend Crystal, I found out that in line 75 the ray should be:
+    
+    ```cpp
+    dir = reflect(dir, nor);
+    ```
+    
+    Everything seems fine now!
+    
+    ![image.png](CIS%20566%20lab02%201051b7c33bd480e5b938df07fabe2d95/image%205.png)
+
 
 # Setup 
 
