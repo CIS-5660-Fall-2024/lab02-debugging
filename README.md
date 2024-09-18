@@ -1,19 +1,20 @@
-# lab02-debugging
+# Lab02- Debugging Shader
+- Name: Catherine Cheng
+- [Shader Link](https://www.shadertoy.com/view/lXlcWj)
 
-# Setup 
-
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
-
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
-
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
-
-Extra credit if you can find all FIVE bugs.
-
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
-- In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+## Bugs
+- **Line 97**: `vec uv2 = 2.0 * uv - vec2(1.0);`
+    - `vec` should be `vec2`.
+    - Found it by directly compile the shader.
+- **Line 100**: `raycast(uv, dir, eye, ref);`
+    - `uv` should be `uv2`.
+    - Found it by first seeing that 3/4 of the screen is cut off. 
+- **Line 11**: `H *= len * iResolution.x / iResolution.x;`
+    - Should be `iResolution.x / iResolution.y`
+    - Found it by seeing the spheres being oval.
+- **Line 18**: `for(int i = 0; i < 64; ++i)`
+    - 64 should be some larger number, such as 128
+    - This causes too few iterations during ray marching so that floor would not expand far enough
+- **Line 75**: `dir = reflect(eye, nor);`
+    - `eye` should be `dir`
+    - Found it by seeing incorrect reflection. Correct reflection should take view direction and normal as inputs.
