@@ -3,13 +3,18 @@
 # Setup 
 
 Team Yippee: Jill Rayca and Clara Nolan
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
-
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
-
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
-
+https://www.shadertoy.com/view/MXXcD2
+Bugs:
+1) Changed rotateX to rotateY to get proper orientation in raycast()
+   Found: Screen ratio was warped.
+2) Added vec2 uv2 in mainImage()
+   Found: Shader didn't compile correctly.
+3) Changed uv->uv2 in main function so raycast has proper input and sdf. (this also fixed the position issue)
+   Found: SDFs weren't interacting properly, needed to be negative.
+5) I saw in other similar shadertoys that the raymarching iterations is 256 instead of 64 so I changed that. I think it also fixed the issue of pixeling.
+   Found: Pixels were weird in sky and ground.
+6) Changed reflection to dir,nor
+  Found: Specular reflections were not correct/non-existent. Were calculated using incorrect view vector.
 Extra credit if you can find all FIVE bugs.
 
 # Submission
