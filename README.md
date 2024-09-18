@@ -47,17 +47,6 @@ dir = reflect(dir, nor);
 ```
 
 ---
-We also noticed that the current scene was overall brighter than the reference, which can be attributed to incorrect global illumination.
-It turns out the skybox color should be computed using object-space direction of the hit object to the sky (i.e. the object normal), rather than the world-space direction. Thus, we changed:
-```glsl
-specReflCol = skyColor(dir);
-```
-to:
-```glsl
-specReflCol = skyColor(nor);
-```
-
----
 Finally, we addressed the problem of the scene not being drawn to a far enough distance. With Rachel's help, we fixed this by increasing the iteration limit for the ray march from:
 ```glsl
 for(int i = 0; i < 64; ++i) {
