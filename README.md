@@ -1,5 +1,18 @@
 # lab02-debugging
 
+# Link
+[Link](https://www.shadertoy.com/view/lXXcD2)
+
+# Team Member
+Annie Qiu
+
+# Bugs
+- 1. vec -> vec2 : This is a reported error.
+  2. raycast(uv, dir, eye, ref); -> raycast(uv2, dir, eye, ref); : Unused variable.
+  3. dir = reflect(eye, nor); -> dir = reflect(dir, nor); : Using eye does not make any sense.
+  4. H *= len * iResolution.x / iResolution.x; -> H *= len * iResolution.x / iResolution.y; : Why use iResolution.x / iResolution.x, which is 1?
+  5. for(int i = 0; i < 64; ++i) -> for(int i = 0; i < 160; ++i) : Not enough grids are shown in the far distance.
+
 # Setup 
 
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
