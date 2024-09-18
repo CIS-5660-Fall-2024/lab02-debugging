@@ -1,19 +1,17 @@
 # lab02-debugging
 
-# Setup 
+Team: Anthony Ge
 
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
+Shader: https://www.shadertoy.com/view/MXXcW2
 
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
-
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
-
-Extra credit if you can find all FIVE bugs.
-
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
-- In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+Bugs:
+- Bad perspective: We see the balls from above and really close up. Anthony helped point this problem out.
+    - I fixed this by inputting the correct uv into the raycast function
+- Bad aspect ratio: The screen appeared to be stretched. I read the raycast code and saw that the H was making the screen a square by diving x by itself.
+    - I fixed this by diving the resolution's x by y instead of itself
+- Small floor: The ground appeared to be really small. I tried to increase the raycast distance and that worked well.
+    - I increased the raymarch distance
+- Folding floor: The floor appeared to fold up between the spheres. I saw that the threshold to return might not be precise enough, so I reduced it.
+    - I decreased the value m is compared to in the raymarch code (I think?)
+- No reflections: The balls and floor weren't reflecting anything. Adam asked me what the proper inputs to reflect were, and I saw the problem.
+    - I changed the reflect function to input dir instead of eye
