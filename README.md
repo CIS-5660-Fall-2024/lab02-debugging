@@ -1,19 +1,11 @@
-# lab02-debugging
 
-# Setup 
-
-Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
-
-Let's practice debugging! We have a broken shader. It should produce output that looks like this:
-[Unbelievably beautiful shader](https://user-images.githubusercontent.com/1758825/200729570-8e10a37a-345d-4aff-8eff-6baf54a32a40.webm)
-
-It don't do that. Correct THREE of the FIVE bugs that are messing up the output. You are STRONGLY ENCOURAGED to work with a partner and pair program to force you to talk about your debugging thought process out loud.
-
-Extra credit if you can find all FIVE bugs.
-
-# Submission
-- Create a pull request to this repository
-- In the README, include the names of both your team members
-- In the README, create a link to your shader toy solution with the bugs corrected
 - In the README, describe each bug you found and include a sentence about HOW you found it.
-- Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+
+- Team Member: Sirui Zhu and Crystal Jin
+- Link: https://www.shadertoy.com/view/43lyW2
+- Bugs:
+- 1. Line 97: Change from vec to vec2. Initially, it shows that there is a syntax issue caused by uv2 with a type vec. uv2 should be vec2 as it is calculated from uv which is a vec2 and by definition uv2 should be vec2 to indicate a position in a 2D coordinate.
+- 2. Line 100: Change from uv to uv2. Previously we adjusted uv from [0,1] to uv2 [-1,1] to make the center lie on the origin (0,0), and we should use it here.
+- 3. Line 11: Change the second iResolution.x to iResolution.y. Objects are weirdly stretched in the x-axis. After taking a deep look at the raycast function, I found that on line 11 we should time the aspect ratio (iResolution.x / iResolution.y) instead.
+- 4. Line 75: Change from eye to dir. Specular reflection does not work, and to achieve it we need to make a recursive call.
+- 5. Line 18: Change the iteration from 64 to 100. The ground grid is not rendered as much compared to it in the example demo. So we need more iterations in the march function to explore further distance. 
