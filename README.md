@@ -1,5 +1,13 @@
 # lab02-debugging
 
+[My solution](https://www.shadertoy.com/view/MXXyD2)
+
+**Bugs**
+
+1. UVs - Realizing that nothing was outputting anyway, I checked the mainImage function and fixed the syntax. Then I made sure to use the `uv2` variable instead of `uv`.
+2. Scaling - Now that I had something displaying, I noticed that the resolution was very stretched, so I looked for places where `iResolution` was used. I found that `H` in the `raycast` function was being divided by `iResolution.x` instead of `iResolution.y`, so I changed it.
+3. Change reflection direction - Since the materials didn't have a proper reflection, I checked the code in `sdf3D`, and found that `dir` was being reflected over `eye` instead of `dir`.
+
 # Setup 
 
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
