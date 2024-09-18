@@ -1,6 +1,9 @@
 # lab02-debugging - Annie Qiu
 Shader toy Link: https://www.shadertoy.com/view/4XlyWj
 
+# Results
+![](Result.gif)
+
 # Debug Process
 
 ### vec to vec2
