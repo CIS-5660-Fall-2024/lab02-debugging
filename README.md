@@ -1,5 +1,14 @@
 # lab02-debugging
 
+Team: Christina Qiu, Jason Liu
+Link: https://www.shadertoy.com/view/43scWj
+Bugs: 
+* H *= len * iResolution.x / iResolution.y; // found because it was originally iResolution.x / iResolution.x which would have just been 1.0
+* for(int i = 0; i < 640; ++i) { // found because the ground was dissapearing too soon, so know that the ray was ending after only a few iterations
+* dir = reflect(dir, nor); // found because having it reflect by eye would be wrong, since reflect should take in incident direction and then normal direction
+* vec2 uv2 = 2.0 * uv - vec2(1.0); // found because there was a red error sign that vec wasn't valid
+* raycast(uv2, dir, eye, ref); // found because the rotation was off, which was due to the uv not being in the correct ranges
+
 # Setup 
 
 Create a [Shadertoy account](https://www.shadertoy.com/). Either fork this shadertoy, or create a new shadertoy and copy the code from the [Debugging Puzzle](https://www.shadertoy.com/view/flGfRc).
