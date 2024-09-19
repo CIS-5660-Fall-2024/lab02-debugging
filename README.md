@@ -1,3 +1,4 @@
+link to shadertoy: https://www.shadertoy.com/view/4XlyDj
 # lab02-debugging
 Name: Jinxiang Wang
 Bugs found: 
