@@ -17,3 +17,34 @@ Extra credit if you can find all FIVE bugs.
 - In the README, create a link to your shader toy solution with the bugs corrected
 - In the README, describe each bug you found and include a sentence about HOW you found it.
 - Make sure all three of your shadertoys are set to UNLISTED or PUBLIC (so we can see them!)
+
+# Result
+[shader link](https://www.shadertoy.com/view/M3ScWh)
+
+## Bugs
+- line 97
+```
+// wrong code
+vec uv2 = 2.0 * uv - vec2(1.0);
+
+// correct
+uv = 2.0 * uv - vec2(1.0);
+```
+
+- In the raycast function Line 11
+```
+// wrong code
+H *= len * iResolution.x / iResolution.x;
+
+// correct
+H *= len * iResolution.x / iResolution.y;
+```
+
+- Line 75
+```
+// wrong code 
+dir = reflect(eye, nor);
+
+//correct
+dir = reflect(dir, nor);
+```
